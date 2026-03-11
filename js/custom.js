@@ -30,6 +30,10 @@ window.addEventListener('load', () => {
 
     setInterval(showNextDiv, 7000);
 
+    let footerH = document.querySelector("footer").offsetHeight;
+    let content = document.getElementById("csm-spacing");
+    content.style.paddingBottom = footerH + "px";
+
 });
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, GSDevTools, SplitText);
@@ -214,15 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            gsap.from(".box", {
-                scrollTrigger: {
-                    trigger: ".container",
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                },
-                opacity: 0,
-                y: 50
-            });
+            // gsap.from(".box", {
+            //     scrollTrigger: {
+            //         trigger: ".container",
+            //         start: "top 80%",
+            //         toggleActions: "play none none none"
+            //     },
+            //     opacity: 0,
+            //     y: 50
+            // });
 
             const rtiIN = document.getElementById('rti-in');
             const rtiTEXT = document.getElementById('rti-text');
@@ -245,46 +249,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
             slideTextonScroll();
 
-            let boxesL = gsap.utils.toArray(".col-left .box");
-            let boxesR = gsap.utils.toArray(".col-right .box");
+            // let boxesL = gsap.utils.toArray(".col-left .box");
+            // let boxesR = gsap.utils.toArray(".col-right .box");
 
-            boxesL.forEach((box, i) => {
-                gsap.fromTo(box, {
-                    xPercent: -100,
-                },
-                { 
-                    xPercent: 0,
-                    duration: 3,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: box,
-                        start: "top 90%",
-                        end: "bottom 30%",
-                        toggleActions: "restart pause reverse pause",
-                        toggleClass: "active",
-                        scrub: true,
-                    },
-                });
-            });
+            // boxesL.forEach((box, i) => {
+            //     gsap.fromTo(box, {
+            //         xPercent: -100,
+            //     },
+            //     { 
+            //         xPercent: 0,
+            //         duration: 3,
+            //         ease: "none",
+            //         scrollTrigger: {
+            //             trigger: box,
+            //             start: "top 90%",
+            //             end: "bottom 30%",
+            //             toggleActions: "restart pause reverse pause",
+            //             toggleClass: "active",
+            //             scrub: true,
+            //         },
+            //     });
+            // });
 
-            boxesR.forEach((box, i) => {
-                gsap.fromTo(box, {
-                    xPercent: 100,
-                },
-                { 
-                    xPercent: 0,
-                    duration: 3,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: box,
-                        start: "top 90%",
-                        end: "bottom 30%",
-                        toggleActions: "restart pause reverse pause",
-                        toggleClass: "active",
-                        scrub: true,
-                    },
-                });
-            });
+            // boxesR.forEach((box, i) => {
+            //     gsap.fromTo(box, {
+            //         xPercent: 100,
+            //     },
+            //     { 
+            //         xPercent: 0,
+            //         duration: 3,
+            //         ease: "none",
+            //         scrollTrigger: {
+            //             trigger: box,
+            //             start: "top 90%",
+            //             end: "bottom 30%",
+            //             toggleActions: "restart pause reverse pause",
+            //             toggleClass: "active",
+            //             scrub: true,
+            //         },
+            //     });
+            // });
 
             let highlight = gsap.utils.toArray(".text-highlight");
 
@@ -323,7 +327,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 0);
             });
 
-            
+            var acc = document.getElementsByClassName("csm-accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    panel.classList.toggle("active");
+                });
+            }
+
+            // gsap.to("footer", {
+            //     ease: "none",
+            //     scrollTrigger: {
+            //         trigger: ".last-section",
+            //         start: "bottom bottom",
+            //         end: "+=100%",
+            //         scrub: true
+            //     }
+            // });
+
+            ScrollTrigger.create({
+                trigger: "#csm-spacing",
+                start: "top center",
+                toggleClass: { targets: "#smooth-wrapper", className: "active" }
+            });
+
+            gsap.set("footer", { pointerEvents: "all" });
+
+            $("#back-to-top").click(function(){
+                $('body,html').animate({scrollTop:0},800);
+                return false;
+            });
 
         });
 

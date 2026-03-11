@@ -240,10 +240,14 @@ body {
     padding: 0;
 }
 
+html {
+    font-size: 24px;
+}
+
 body {
     background: #fff;
     font-family: "Urbanist", sans-serif;
-    font-size: 24px;
+    font-size: 1rem;
     color: #12271D;
 }
 
@@ -259,8 +263,22 @@ body {
     z-index: 100;
 }
 
+#smooth-wrapper {
+    pointer-events: all;
+    z-index: 100;
+}
+
+#smooth-wrapper.active {
+    pointer-events: none;
+}
+
+#smooth-content {
+    position: relative;
+}
+
 .body-container {
-    background: white;
+    position: relative;
+    z-index: 500;
 }
 
 .container-fluid {
@@ -829,6 +847,11 @@ h3 {
     line-height: 1.3;
 }
 
+h4 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
 .csm-image-grid .text-col-right {
     padding: 0 calc(100vw * 0.08) 0 calc(100vw * 0.04);
 }
@@ -978,6 +1001,10 @@ h3 {
     overflow: hidden;
 }
 
+.csm-box {
+    padding: 0 20px;
+}
+
 .csm-icon {
     display: flex;
     justify-content: center;
@@ -1009,15 +1036,30 @@ h3 {
 
 
 .csm-icon-boxes-full {
-    background: #fff;
+    background: #fffdf5;
+    padding-top: 100px;
 }
 
 .csm-icon-boxes {
-    width: 1600px;
+    width: 1680px;
     max-width: 100%;
     margin: 0 auto;
     text-align: center;
     padding-bottom: 100px;
+}
+
+.csm-icon-boxes h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.csm-icon-boxes p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.3;
 }
 
 .csm-icon svg {
@@ -1056,12 +1098,138 @@ h3 {
     margin: 0 auto;
 }
 
+.highlight-text {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.accordion-container {
+    padding: 100px 0;
+}
+
+.csm-faq {
+    width: 1400px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.csm-accordion-box {
+    border-top: solid 1px #9f9d96;
+}
+
+.csm-accordion {
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding-right: calc(40px + 0.5rem);
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+}
+
+.csm-accordion:before,
+.csm-accordion:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 14px;
+    height: 2px;
+    background-color: #12271D;
+    transition: transform .3s ease;
+}
+
+.csm-accordion:before {
+    transform: rotate(90deg);
+}
+
+.csm-accordion.active:before {
+    transform: rotate(0deg);
+}
+
+.csm-accordion.active:after {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.csm-accordion:focus {
+    outline: none;
+}
+
+.csm-accordion:hover {
+    padding-left: calc(18px + 0.5rem);
+    padding-right: 40px;
+}
+
+.csm-accordion.active:hover {
+    padding-left: 18px;
+}
+
+.accordion-container .csm-sec-title {
+    width: 20rem;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.accordion-container .csm-subtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.accordion-panel {
+    padding: 0 18px;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.accordion-panel.active {
+    height: auto;
+    padding: 0 18px 18px;
+}
+
+.accordion-panel > * {
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+.accordion-panel > :last-child {
+    margin-bottom: 0;
+}
+
+.accordion-container {
+    width: 100%;
+    background: #f7f4e9;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    z-index: 10;
+}
+
+#csm-footer {
+    width: 100%;
+}
+
 .csm-footer {
     display: flex;
     flex-direction: column;
     padding: 100px 200px 40px;
     background: #e9e3d4;
     position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .csm-footer:after {
@@ -1080,6 +1248,11 @@ h3 {
 
 .cfm-col {
     position: relative;
+}
+
+.cfm-col:has(.cf-text) {
+    display: flex;
+    align-items: center;
 }
 
 .cf-box-main {
