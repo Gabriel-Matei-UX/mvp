@@ -263,10 +263,10 @@ body.nav-open {
 }
 
 .mobile-trigger {
-    position: fixed;
+    position: absolute;
     top: 13px;
     right: 20px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 40px;
@@ -281,8 +281,8 @@ body.nav-open {
     justify-content: center;
     overflow: hidden;
     position: relative;
-    top: 7px;
-    right: 3px;
+    top: 0;
+    right: 0;
 }
 
 .mobile-trigger .nav-toggle-burger .burger-line,
@@ -313,10 +313,10 @@ body.nav-open {
     width: 36px;
     height: 36px;
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 20px;
+    left: 9px;
     transform: rotate(45deg);
-    transform-origin: 90% -30%;
+    transform-origin: 100% 0;
     overflow: hidden;
     pointer-events: none;
 }
@@ -1958,6 +1958,10 @@ footer {
 
     .desktop-only {
         display: none;
+    }
+
+    .mobile-trigger {
+        display: flex;
     }
 
     .csm-footer .cf-box {
