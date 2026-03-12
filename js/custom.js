@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function init() {
 
+        let width = screen.width;
         let body = document.querySelector("body");
         body.classList.add('js-on');
 
@@ -467,9 +468,59 @@ document.addEventListener('DOMContentLoaded', () => {
             //     });
             // };
 
-            const titleReveal = document.querySelector(".title-reveal");
-            if (titleReveal) {
-                splitText(".title-reveal");
+            // const titleReveal = document.querySelector(".title-reveal");
+            // if (titleReveal) {
+            //     splitText(".title-reveal");
+            // }
+
+            const stickyCL = document.querySelector(".csm-about-boxes");
+            if (stickyCL) {
+                if (width > 991) {
+                    ScrollTrigger.create({    
+                        trigger: '.csm-about-boxes',
+                        start: 'top top',
+                        end: 'bottom center',
+                        pin: '.csm-about-content .sticky-content',
+                        pinSpacing: false    
+                    });
+                }
+            }
+
+            const cardBoxes = document.querySelector(".csm-cards");
+            if (cardBoxes) {
+                gsap.utils.toArray(".csm-card").forEach((el) => {
+                    gsap.effects.slideEffectSC(el, {
+                        x: 100,
+                        y: 0,
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%",
+                            toggleActions: "play none none none",
+                        }
+                    });
+                });
+            }
+
+            const cardBoxFeatures = document.querySelector(".csm-card-features-list");
+            if (cardBoxFeatures) {
+                gsap.utils.toArray(".csm-card-features-list-item").forEach((card) => {
+                    animation.splitText(card.querySelector(".text"), {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            toggleActions: "play none none none"
+                        },
+                        duration: 0.3,
+                        opacity: 0,
+                        scale: 0,
+                        x: 0,
+                        y: 10,
+                        rotationX: 45,
+                        transformOrigin: "0% 50% -20",
+                        ease: "back",
+                        stagger: 0.005,
+                    });
+                });
             }
 
             const accordionBox = document.querySelector(".csm-accordion-box");
@@ -501,34 +552,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            const revealAnimations = {
-                "reveal-up": { y: 80 },
-                "reveal-down": { y: -80 },
-                "reveal-left": { x: -80 },
-                "reveal-right": { x: 80 },
-                "reveal-fade": { opacity: 0 }
-            };
+            // const revealAnimations = {
+            //     "reveal-up": { y: 80 },
+            //     "reveal-down": { y: -80 },
+            //     "reveal-left": { x: -80 },
+            //     "reveal-right": { x: 80 },
+            //     "reveal-fade": { opacity: 0 }
+            // };
 
-            Object.keys(revealAnimations).forEach((cls) => {
+            // Object.keys(revealAnimations).forEach((cls) => {
 
-                gsap.utils.toArray("." + cls).forEach((el) => {
+            //     gsap.utils.toArray("." + cls).forEach((el) => {
 
-                    gsap.from(el.children.length ? el.children : el, {
-                        opacity: 0,
-                        ...revealAnimations[cls],
-                        duration: 0.8,
-                        ease: "power2.out",
-                        stagger: 0.08,
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top 85%",
-                            toggleActions: "play none none none"
-                        }
-                    });
+            //         gsap.from(el.children.length ? el.children : el, {
+            //             opacity: 0,
+            //             ...revealAnimations[cls],
+            //             duration: 0.8,
+            //             ease: "power2.out",
+            //             stagger: 0.08,
+            //             scrollTrigger: {
+            //                 trigger: el,
+            //                 start: "top 85%",
+            //                 toggleActions: "play none none none"
+            //             }
+            //         });
 
-                });
+            //     });
 
-            });
+            // });
 
             // const animationsByAttr = {
             //     up: { y: 80 },
@@ -589,11 +640,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // });
 
-            ScrollTrigger.create({
-                trigger: "#csm-spacing",
-                start: "top center",
-                toggleClass: { targets: "#smooth-wrapper", className: "active" }
-            });
+            const csmSpacing = document.querySelector('#csm-spacing');
+            if (csmSpacing) {
+                ScrollTrigger.create({
+                    trigger: "#csm-spacing",
+                    start: "top center",
+                    toggleClass: { targets: "#smooth-wrapper", className: "active" }
+                });
+            }
 
             gsap.set("footer", { pointerEvents: "all" });
 
@@ -642,7 +696,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
         });
-        
     }
 
     window.addEventListener('load', () => {
