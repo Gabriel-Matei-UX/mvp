@@ -2282,6 +2282,20 @@ footer {
     .csm-footer .csm-footer-middle > .cfm-col:first-child {
         padding-bottom: 20px;
     }
+
+    .hero-c-left .hero-btn {
+        flex-direction: column;
+    }
+
+    .hero-c-left .hero-btn .csm-btn {
+        width: 200px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-c-left .hero-btn .csm-btn + .csm-btn {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 400px) {
