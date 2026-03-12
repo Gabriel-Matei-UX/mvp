@@ -244,6 +244,24 @@ html {
     font-size: 24px;
 }
 
+body .loading {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000 url('../img/loading.gif') scroll 50% 50% no-repeat;
+    z-index: 5000;
+}
+
+body.js-on .loading {
+    display: none !important;
+}
+
+
 body {
     background: #fff;
     font-family: "Urbanist", sans-serif;
