@@ -51,7 +51,9 @@ window.addEventListener('load', () => {
 
     let footerH = document.querySelector("footer").offsetHeight;
     let content = document.getElementById("csm-spacing");
-    content.style.paddingBottom = footerH + "px";
+    if (content) {
+        content.style.paddingBottom = footerH + "px";
+    }
 
 });
 
